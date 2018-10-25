@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Multiple Precision Arithmetic</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,500|Sorts+Mill+Goudy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,500|Raleway" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
