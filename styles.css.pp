@@ -19,8 +19,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Raleway', sans-serif;
 }
 
+/*
 code {
     background-color: #efefef;
     padding: 2px 4px 2px 4px;
     border-radius: 4px;
 }
+*/

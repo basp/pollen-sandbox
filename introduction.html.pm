@@ -12,3 +12,14 @@ And this should be the second paragraph that contains a little bit of ◊code{3 
 }
 
 Now this one should be the third paragraph but I'm not really sure how it will be rendered by Pollen though.
+
+In this fourth paragraph we will see if the syntax highlighting works. Below is some C# code that is supposed to be highlighted.
+
+◊pre{◊code[#:class "cs"]{
+    static uint[] Multiply(uint[] a, uint[] b) { ... };
+
+    var a = new uint[] { 1, 2, 3 };
+    var b = new uint[] { 4, 5, 6 };
+    
+    Multiply(a, b).Dump();
+}}

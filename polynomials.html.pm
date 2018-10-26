@@ -67,7 +67,7 @@
     which is the generalized form of polynomial addition.
     
     ◊aside{
-        Without going into much math there is a real distinction between a ◊${P(x)} and ◊${P(\beta)}. The main thing to keep in mind is that when we use ◊${x} we usually don't care too much about the actual value of ◊${x}. However, when we use ◊${\beta} we ◊strong{do} care about the actual value for reasons that will be come apparent soon.
+        Without going into much math there is a real distinction between ◊${P(x)} and ◊${P(\beta)}. The main thing to keep in mind is that when we use ◊${x} we usually don't care too much about the actual value of ◊${x}. However, when we use ◊${\beta} we ◊strong{do} care about the actual value for reasons that will be come apparent soon.
     }
 }
 
@@ -80,8 +80,8 @@
 
     ◊$${
         \begin{align}
-        P(x) &= 3x^2 + 5x + 3\\
-        Q(x) &= 5x^2 + 3x + 2
+        P(x) &= 5x + 4\\
+        Q(x) &= 3x + 2
         \end{align}
     }
 
@@ -90,10 +90,9 @@
     ◊$${
         \begin{align}
         R(x) &= P(x) \cdot Q(x)\\
-             &= (3x^2 + 5x + 3) \cdot (5x^2 + 3x + 2)\\
-             &= 3x^2 \cdot 5x^2 + 3x^2 \cdot 3x + 3x^2 \cdot 2 + 5x \cdot 5x^2 + 5x\cdot 3x + 5x \cdot 2 + 3 \cdot 5x^2 + 3 \cdot 3x + 3 \cdot 2
+             &= 5x \cdot 3x + 5x \cdot 2 + 4 \cdot 3x + 4 \cdot 2\\
+             &= 15x^2 + 10x + 12x + 8\\
+             &= 15x^2 + 22x + 8
         \end{align}
     }
-
-    When you look at that last expansion you can quickly see why naive multiplication is ◊${O(n^2)}. In this case ◊${n = 3} since our ◊em{largest} polynomial has 3 terms (actually they both have 3 terms) which means ◊${O(3^2) = 9}. The last line in the expansion of ◊${R(x)} above contains exactly 9 terms which are summed up.
 }
