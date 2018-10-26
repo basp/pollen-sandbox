@@ -9,7 +9,7 @@ body {
 }
 
 aside {
-    font-size: 0.8em;
+    font-size: 0.9em;
     padding: 16px 32px 16px 32px;
     background-color: azure;
     color: black;

@@ -61,13 +61,16 @@
     and with ◊${p = max(m, n)} and ◊${q = min(l, k)} we can write
 
     ◊$${
-        S(x) = P(x) + Q(x) = (a_p + b_p)x^p + (a_{p-1} + b_{p-1})x^{p - 1} + \cdots + (a_q + b_q)x^q
+        \begin{align}
+        S(x) &= P(x) + Q(x)\\ 
+             &= (a_p + b_p)x^p + (a_{p-1} + b_{p-1})x^{p - 1} + \cdots + (a_q + b_q)x^q
+        \end{align}
     }
 
     which is the generalized form of polynomial addition.
     
     ◊aside{
-        Without going into much math there is a real distinction between ◊${P(x)} and ◊${P(\beta)}. The main thing to keep in mind is that when we use ◊${x} we usually don't care too much about the actual value of ◊${x}. However, when we use ◊${\beta} we ◊strong{do} care about the actual value for reasons that will be come apparent soon.
+        Later on we will start using ◊${\beta} instead of ◊${x}. Without going into much math, there is a real distinction between ◊${P(x)} and ◊${P(\beta)}. The main thing to keep in mind is that when we use ◊${x} we usually don't care too much about the actual value of ◊${x}. However, when we use ◊${\beta} we ◊strong{do} care about the actual value of ◊${\beta} for reasons that will become apparent by then.
     }
 }
 
