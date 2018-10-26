@@ -20,6 +20,13 @@ In this fourth paragraph we will see if the syntax highlighting works. Below is 
 
     var a = new uint[] { 1, 2, 3 };
     var b = new uint[] { 4, 5, 6 };
-    
+
     Multiply(a, b).Dump();
+}}
+
+Not sure if there is an easier way to do this but in Racket, in order to get list of value, index pairs from a list we can define something like:
+
+◊pre{◊code[#:class "racket"]{
+    (define (indexed xs)
+      [map (lambda (x i) (cons x i)) xs (range (length xs))])
 }}
