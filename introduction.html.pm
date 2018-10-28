@@ -30,3 +30,20 @@ Not sure if there is an easier way to do this but in Racket, in order to get lis
     (define (indexed xs)
       [map (lambda (x i) (cons x i)) xs (range (length xs))])
 }}
+
+The above implementation is easy to write but it has the downside that we need to create another list of n elements just to hold our indexes. We can do a bit better than that:
+
+◊pre{◊code[#:class "racket"]{
+    (define (mapi-acc f xs i acc)
+      (cond [(empty? xs) acc]
+            [else (mapi-acc f (rest xs) (+ i 1) (append acc (list (f (first xs) i))))]))
+
+    (define (mapi f xs)
+      (mapi-acc f xs 0 empty))
+
+    (mapi (lambda (x i) (cons x i)) (list 'a 'b 'c))
+
+    ; => '((a . 0) (b . 1) (c. 2))
+}}
+
+We are not using ◊code{map} anymore and we don't need to build up an extra list for our indexes in this recursive implementation.

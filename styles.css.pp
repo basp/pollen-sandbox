@@ -4,8 +4,8 @@ body {
     margin: 3em 7.5em 3em 7.5em;
     font-size: 1.3em;
     line-height: 1.3em;
-    font-family: 'Garamond', serif;
-    /* font-family: 'Lato', sans-serif; */
+    /* font-family: 'Cormorant Garamond', serif; */
+    font-family: serif;
 }
 
 aside {

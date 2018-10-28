@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Multiple Precision Arithmetic</title>
-    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,500|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:500|Raleway" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/arduino-light.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>

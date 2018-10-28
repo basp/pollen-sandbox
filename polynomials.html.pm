@@ -67,11 +67,38 @@
         \end{align}
     }
 
-    which is the generalized form of polynomial addition.
+    which is the generalized form of polynomial addition. 
     
-    ◊aside{
-        Later on we will start using ◊${\beta} instead of ◊${x}. Without going into much math, there is a real distinction between ◊${P(x)} and ◊${P(\beta)}. The main thing to keep in mind is that when we use ◊${x} we usually don't care too much about the actual value of ◊${x}. However, when we use ◊${\beta} we ◊strong{do} care about the actual value of ◊${\beta} for reasons that will become apparent by then.
+    ◊h4{Subtracting polynomials}
+
+    Subtraction works the same way as addition except we have: 
+
+    ◊$${
+        \begin{align}
+        S(x) &= P(x) - Q(x)\\ 
+             &= (a_p - b_p)x^p + (a_{p-1} - b_{p-1})x^{p - 1} + \cdots + (a_q - b_q)x^q
+        \end{align}
     }
+
+    which we mention mostly for completeness but it should also intuitively make sense.
+}
+
+◊section{
+    ◊hgroup{
+        ◊h4{A small detour}
+        ◊h5{Where we verify the above statements with code}
+    }
+
+    Now that we covered addition and subtraction we can take a small detour and write a bit of code to verify all of the above. L
+    
+    Let's start with two semi random arrays of integers:
+
+    ◊pre{◊code[#:class "cs"]{
+        var p = new[] { 5, 3, 1 };
+        var q = new[] { 2, 1, 4 };
+    }}
+
+    These arrays can be thought of polynomials in a very straightforward way. Every element ◊code{a[i]} in the arrays above represents a term of ◊${a_{i}x^{i}} in a polynomial where the position in the array corresponds to a power of ◊${i} in the variable ◊${x}.
 }
 
 ◊section{
@@ -97,5 +124,9 @@
              &= 15x^2 + 10x + 12x + 8\\
              &= 15x^2 + 22x + 8
         \end{align}
+    }
+
+    ◊aside{
+        Later on we will start using ◊${\beta} instead of ◊${x}. Without going into much math, there is a real distinction between ◊${P(x)} and ◊${P(\beta)}. The main thing to keep in mind is that when we use ◊${x} we usually don't care too much about the actual value of ◊${x}. However, when we use ◊${\beta} we ◊strong{do} care about the actual value of ◊${\beta} for reasons that will become apparent by then.
     }
 }
