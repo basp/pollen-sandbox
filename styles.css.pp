@@ -6,12 +6,11 @@ body {
     /* font-family: 'Cormorant Garamond', serif; */
     font-family: serif;
     padding: 0;
+    margin: 0;
 }
 
-
-
 section {
-    padding:  0em 5em 1.25em 5em;
+    padding:  1.25em 5em 1.25em 5em;
 }
 
 section.code {
