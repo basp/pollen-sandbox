@@ -1,11 +1,11 @@
 #lang pollen
 
-◊hgroup{
-    ◊h2{Polynomials}
-    ◊h4{A foundation for multiple precision arithmetic}
-}
-
 ◊section{     
+    ◊hgroup{
+        ◊h2{Polynomials}
+        ◊h4{A foundation for multiple precision arithmetic}
+    }
+
     Since arithmetic on polynomials and numbers in positional notation is so closely related we will first take a look at polynomials in order to develop a foundation for later chapters. We will only deal with polynomials with radixes and coefficients that are integers. We will allow negative powers of ◊${x} since these will be essential later when we need to model fractional numbers.
 
     We can write the general definition for a polynomial as
@@ -83,22 +83,54 @@
     which we mention mostly for completeness but it should also intuitively make sense.
 }
 
-◊section{
-    ◊hgroup{
-        ◊h4{A small detour}
-        ◊h5{Where we verify the above statements with code}
-    }
-
+◊section[#:class "code"]{
+    ◊h4{Code: adding polynomials}
     Now that we covered addition and subtraction we can take a small detour and write a bit of code to verify all of the above. L
     
-    Let's start with two semi random arrays of integers:
+    Let's start with two polynomials 
+    ◊$${
+        \begin{align}
+        P(x) &= 5x^2 + 3x + 1\\
+        Q(x) &= 2x^2 + x + 4
+        \end{align}
+    }
 
+    represented as two arrays:
     ◊pre{◊code[#:class "cs"]{
-        var p = new[] { 5, 3, 1 };
-        var q = new[] { 2, 1, 4 };
+        var p = new[] { 1, 3, 5 };
+        var q = new[] { 4, 1, 2 };
     }}
 
-    These arrays can be thought of polynomials in a very straightforward way. Every element ◊code{a[i]} in the arrays above represents a term of ◊${a_{i}x^{i}} in a polynomial where the position in the array corresponds to a power of ◊${i} in the variable ◊${x}.
+    These arrays can be thought of polynomials in a very straightforward way. Every element ◊code{a[i]} in the arrays ◊code{p} and ◊code{q} represents a term of ◊${a_{i}x^{i}} in the polynomials ◊${P} and ◊${Q} respectively. 
+    
+    ◊aside{
+        Note that the literal form of ◊code{p} and ◊code{q} appears reversed since we specify arrays like ◊code{new [] { x0, x1, ..., xn }} in code but conventionally write them the opposite way when doing math.
+    }
+
+    The code to perform an addition then:
+    ◊pre{◊code[#:class "cs"]{
+        public int[] PolyAdd(int[] p, int[] q)
+        {
+            Debug.Assert(p.Length >= 0);
+            Debug.Assert(q.Length >= 0);
+            Debug.Assert(p.Length >= q.Length);
+
+            var c = new int[p.Length];
+            var i = 0;
+            
+            for(; i < q.Length; i++)
+            {
+                c[i] = p[i] + q[i];
+            }
+
+            for(; i < p.Length; i++)
+            {
+                c[i] = p[i];
+            }
+
+            return c;
+        }
+    }}
 }
 
 ◊section{
@@ -126,7 +158,63 @@
         \end{align}
     }
 
-    ◊aside{
-        Later on we will start using ◊${\beta} instead of ◊${x}. Without going into much math, there is a real distinction between ◊${P(x)} and ◊${P(\beta)}. The main thing to keep in mind is that when we use ◊${x} we usually don't care too much about the actual value of ◊${x}. However, when we use ◊${\beta} we ◊strong{do} care about the actual value of ◊${\beta} for reasons that will become apparent by then.
+    And more generally, remembering that we can write ◊${P} and ◊${Q} as
+    ◊$${
+        \begin{align}
+        P(x) &= a_{m}x^{m} + a_{m-1}x^{m-1} + \cdots + a_{l}x^{l}\\
+        Q(x) &= a_{n}x^{n} + a_{n-1}x^{n-1} + \cdots + a_{k}x^{k}
+        \end{align}
     }
+
+    with ◊${p = max(m, n)} and ◊${q = min(l, k)} we can write
+    ◊$${
+        \begin{align}
+        R(X) &= P(x) \cdot Q(x)\\
+             &= c_{m+n}x^{m+n} + c_{m+n-1}x^{m+n-1} + \cdots + c_{l+k}x^{l+k}
+        \end{align}
+    }
+    
+    where
+    
+    ◊$${
+        \begin{align}
+        c_j = a_{l}b_{j-l} + a_{l+1}b_{j-l-1} + \cdots + a_{j-k}b_{k}
+        \end{align}
+    }
+}
+
+◊section[#:class "code"]{
+    ◊h4{Code: multiplying polynomials}
+
+    The code to multiply two polynomials actually is a lot less daunting than the math notation from the previous section. Basically we multiply all the terms from ◊code{p} with all the terms of ◊code{q} in a nested loop:
+
+    ◊pre{◊code[#:class "cs"]{
+        public static int[] PolyMultiply(int[] p, int[] q)
+        {
+            Debug.Assert(p.Length >= 0);
+            Debug.Assert(q.Length >= 0);
+            Debug.Assert(p.Length >= q.Length);
+            
+            var len = Math.Max(0, p.Length + q.Length - 1);
+            var c = new int[len];
+            
+            for(var i = 0; i < p.Length; i++)
+            {
+                for(var j = 0; j < q.Length; j++)
+                {
+                    c[i + j] = p[i] * q[j];
+                }
+            } 
+
+            return c;    
+        }
+    }}
+}
+
+◊section{
+    ◊h4{Onwards!}
+
+    If you made it so far or even only skimped it then you are ready for the next section. Don't worry if the math does not make much sense yet. Keep reading and just glare over the parts that make no sense. Most of this is just quick notes but if you really want to understand it, the tools are out there; just start googling.
+
+    In the next chapter we will be focussing at an interesting ◊em{subset} of polynomials that is equivalent to the ◊em{fixed radix number systems} that we mostly use today.
 }

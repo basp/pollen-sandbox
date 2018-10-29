@@ -1,11 +1,25 @@
 #lang pollen
 
 body {
-    margin: 3em 7.5em 3em 7.5em;
     font-size: 1.3em;
     line-height: 1.3em;
     /* font-family: 'Cormorant Garamond', serif; */
     font-family: serif;
+    padding: 0;
+}
+
+
+
+section {
+    padding:  0em 5em 1.25em 5em;
+}
+
+section.code {
+    background-color: whitesmoke;
+}
+
+section.code pre code {
+    background-color: whitesmoke;
 }
 
 aside {
@@ -13,6 +27,11 @@ aside {
     padding: 16px 32px 16px 32px;
     background-color: azure;
     color: black;
+}
+
+aside.todo {
+    background-color: pink;
+    border: 1px solid black;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,3 +45,8 @@ code {
     border-radius: 4px;
 }
 */
+
+pre code {
+    line-height: 1.1em;
+    font-size: 0.9em;
+}

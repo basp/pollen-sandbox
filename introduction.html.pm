@@ -1,49 +1,25 @@
 #lang pollen
 
-This is the first paragraph with some inline ◊${\beta = 10} math.
+◊section{
+    ◊h2{Don't be daunted}
+    ◊h4{The blind leading the blind}
 
-And this should be the second paragraph that contains a little bit of ◊code{3 + 2 = 5} code. Let's make this paragraph a little bit longer and include a bit more of ◊${\beta = 2} so it starts to wrap to multiple lines. That way we can see if the line height settings are nice.
+    This book came into creation as a giant section of notes and at some point I wanted to bundle some of it into a coherent textbook. The coherent book is certainly not there yet but I'm getting to the point where I feel comfortable sharing my work with others. It's definitely not a beginners book and there is some math involved as well. And I'm not that good in math so this will be fun.
 
-◊$${
-    \begin{align}
-    1234_{10} &= 1\cdot1000 + 2\cdot100 + 3\cdot10 + 4\\
-              &= 1\cdot10^3 + 2\cdot10^2 + 3\cdot10 + 4
-    \end{align}
+    If you feel daunted at any point during reading that would be my fault. I am not used to writing books like these and this is still very much a ◊em{work in progress}.
 }
 
-Now this one should be the third paragraph but I'm not really sure how it will be rendered by Pollen though.
+◊section{
+    ◊h4{How to read}
 
-In this fourth paragraph we will see if the syntax highlighting works. Below is some C# code that is supposed to be highlighted.
+    My main advice would be to ◊em{just read} the thing. If you get completely lost at some point just backtrack to some reasonable position and read again. Look up concepts that are unfamiliar. Try to understand them. Look at the ◊strong{code} sections and see how they relate to the math sections. Read the text again and see if it makes more sense.
 
-◊pre{◊code[#:class "cs"]{
-    static uint[] Multiply(uint[] a, uint[] b) { ... };
+    Some things in the book expect you to just read along and have the answer spilled out later. I try my best to keep these interesting but they might be annoying for you as a reader. Please let me know if you hate me for this.
+}
 
-    var a = new uint[] { 1, 2, 3 };
-    var b = new uint[] { 4, 5, 6 };
+◊section{
+    ◊h4{If you get stuck}
 
-    Multiply(a, b).Dump();
-}}
+    Which is more likely than unlikely with the book in its current state, sadly. If you really get stuck that means I did something wrong. Help me make this book better by getting in touch.
+}
 
-Not sure if there is an easier way to do this but in Racket, in order to get list of value, index pairs from a list we can define something like:
-
-◊pre{◊code[#:class "racket"]{
-    (define (indexed xs)
-      [map (lambda (x i) (cons x i)) xs (range (length xs))])
-}}
-
-The above implementation is easy to write but it has the downside that we need to create another list of n elements just to hold our indexes. We can do a bit better than that:
-
-◊pre{◊code[#:class "racket"]{
-    (define (mapi-acc f xs i acc)
-      (cond [(empty? xs) acc]
-            [else (mapi-acc f (rest xs) (+ i 1) (append acc (list (f (first xs) i))))]))
-
-    (define (mapi f xs)
-      (mapi-acc f xs 0 empty))
-
-    (mapi (lambda (x i) (cons x i)) (list 'a 'b 'c))
-
-    ; => '((a . 0) (b . 1) (c. 2))
-}}
-
-We are not using ◊code{map} anymore and we don't need to build up an extra list for our indexes in this recursive implementation.
