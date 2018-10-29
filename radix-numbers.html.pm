@@ -27,7 +27,7 @@
         \end{align}
     }
 
-    Since our coefficients are limited to values between (but excluding) ◊${-{\beta}} and ◊${\beta} something needs to happen when a result falls outside this range.
+    Since our coefficients are limited to values between (but excluding) ◊${-{\beta}} and ◊${\beta} something needs to happen when a result falls outside this range. Hence we get this weird result where suddenly the ◊em{order} of our polynomial changes due to an arithmetic operation.
 }
 
 ◊section{
@@ -117,6 +117,8 @@
     In production we are going to deal with pretty large values of ◊${\beta} but if you want to test your algorithms it quickly becomes a bit messy to deal with these very large numbers so in those cases it helps to limit ◊${\beta} to some small value so they are a bit more friendly to work with. We will see examples of this soon enough.
 
     Before we continue with the last (but certainly not least) piece of the puzzle we will quickly take a look at a number that is in an unfamiliar base. Let's say that ◊${\beta = 5}. This is a base 5 system.
+
+    ◊asice[#:class "todo"]{Where am I going with this paragraph?}
 
     ◊aside{
         From now on, when there might be confusion about the base of a number we will denote it as ◊${a_{\beta}} where ◊${a} is an integer and ◊${\beta} is some kind of base. So when you see
