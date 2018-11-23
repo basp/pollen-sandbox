@@ -3,8 +3,7 @@
 body {
     font-size: 1.3em;
     line-height: 1.3em;
-    /* font-family: 'Cormorant Garamond', serif; */
-    font-family: serif;
+    font-family: 'Cormorant Garamond', serif;
     padding: 0;
     margin: 0;
 }
